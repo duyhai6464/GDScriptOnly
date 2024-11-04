@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfroy2xswmrr8"]
+
+[ext_resource type="Script" path="res://ui_menu/background_menu.gd" id="1_id8vd"]
+[ext_resource type="PackedScene" uid="uid://dfs18lqqbbtph" path="res://land/grid.tscn" id="1_s3ofn"]
+
+[node name="Background" type="CanvasLayer"]
+process_mode = 3
+layer = -1
+offset = Vector2(-1225, -100)
+transform = Transform2D(1, 0, 0, 1, -1225, -100)
+follow_viewport_enabled = true
+follow_viewport_scale = 1.2
+script = ExtResource("1_id8vd")
+
+[node name="Canvas" type="CanvasModulate" parent="."]
+unique_name_in_owner = true
+
+[node name="Grid" parent="." instance=ExtResource("1_s3ofn")]
+unique_name_in_owner = true
+size_grid = 25
+
+[node name="Players" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-300, 700)
+rotation = 0.523599
+ignore_rotation = false
+
+[node name="TimerForBotActChanged" type="Timer" parent="."]
+wait_time = 3.0

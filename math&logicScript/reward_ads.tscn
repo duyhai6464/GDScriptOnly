@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0lwsaq3jkhuy"]
+
+[ext_resource type="Script" path="res://math&logicScript/reward_ads.gd" id="1_bqbd0"]
+
+[node name="RewardAds" type="Node"]
+script = ExtResource("1_bqbd0")

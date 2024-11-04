@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://dkyxvaitj67ib"]
+
+[ext_resource type="Script" path="res://ui_menu/Component/scroll_item_preview/trade_box_preview.gd" id="1_cfehl"]
+[ext_resource type="Texture2D" uid="uid://5lu0o07njv0o" path="res://ui_menu/Component/scroll_item_preview/atlas_texture_gold_2.tres" id="2_8ldlr"]
+[ext_resource type="Texture2D" uid="uid://c4ijlbj55yycq" path="res://ui_menu/Component/scroll_item_preview/particles_selection.png" id="2_lau8w"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w7so5"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_blady"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6wtop"]
+curve = SubResource("Curve_blady")
+
+[sub_resource type="Gradient" id="Gradient_uphg5"]
+offsets = PackedFloat32Array(0.00549451, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a7juy"]
+gradient = SubResource("Gradient_uphg5")
+
+[sub_resource type="Curve" id="Curve_1u0he"]
+_data = [Vector2(0, 0.593407), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hbyb8"]
+curve = SubResource("Curve_1u0he")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ldc0o"]
+lifetime_randomness = 0.34
+particle_flag_disable_z = true
+angle_min = -45.0
+angle_max = 45.0
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.8
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_hbyb8")
+color_ramp = SubResource("GradientTexture1D_a7juy")
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.00999998
+anim_speed_max = 0.1
+anim_offset_max = 1.0
+anim_offset_curve = SubResource("CurveTexture_6wtop")
+
+[node name="TradeBoxPreview" type="CenterContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+script = ExtResource("1_cfehl")
+
+[node name="TypeBox" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 160)
+layout_mode = 2
+texture = ExtResource("2_8ldlr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(1.1, 1.1, 1.1, 1)
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_w7so5")
+position = Vector2(120, 65)
+amount = 6
+process_material = SubResource("ParticleProcessMaterial_ldc0o")
+texture = ExtResource("2_lau8w")
+explosiveness = 0.1
+collision_base_size = 0.0
+local_coords = true

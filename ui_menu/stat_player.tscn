@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://wovembf7fhid"]
+
+[ext_resource type="PackedScene" uid="uid://bxku21rl6okjj" path="res://ui_menu/Component/over_info.tscn" id="1_codyy"]
+[ext_resource type="Script" path="res://ui_menu/stat_player.gd" id="1_mm7nc"]
+[ext_resource type="Texture2D" uid="uid://df5huci42y1rl" path="res://game/Game_asset/ingame/death_skull_streak.png" id="3_b1ik2"]
+[ext_resource type="Texture2D" uid="uid://cbllp3txc5rrk" path="res://game/Game_asset/ingame/square.png" id="4_q1iq1"]
+[ext_resource type="LabelSettings" uid="uid://dfeodggbe0nxf" path="res://game/Game_asset/tres/stat_info_label_settings.tres" id="4_x7x1j"]
+[ext_resource type="Texture2D" uid="uid://cl3ffnje4e0th" path="res://game/Game_asset/ingame/coin.png" id="5_uy6wx"]
+[ext_resource type="Texture2D" uid="uid://cb53sumhy707i" path="res://game/Game_asset/ingame/letter_p.png" id="6_35wsp"]
+[ext_resource type="Texture2D" uid="uid://tkm17q8rw8xw" path="res://game/Game_asset/ingame/death_skull.png" id="8_lxeg8"]
+
+[node name="StatPlayer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Panel_type_6"
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_mm7nc")
+metadata/_tab_index = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+self_modulate = Color(0.152041, 0.316082, 0.437058, 1)
+layout_mode = 2
+theme_type_variation = &"Panel_type_3"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ScoreBHunter" parent="PanelContainer/ScrollContainer/MarginContainer/VBox" instance=ExtResource("1_codyy")]
+unique_name_in_owner = true
+layout_mode = 2
+info_name = "_stat_score_bh_"
+post_texture = ExtResource("6_35wsp")
+label_settings = ExtResource("4_x7x1j")
+
+[node name="ScoreSurvival" parent="PanelContainer/ScrollContainer/MarginContainer/VBox" instance=ExtResource("1_codyy")]
+unique_name_in_owner = true
+layout_mode = 2
+info_name = "_stat_score_s_"
+post_texture = ExtResource("6_35wsp")
+label_settings = ExtResource("4_x7x1j")
+
+[node name="ScoreFree" parent="PanelContainer/ScrollContainer/MarginContainer/VBox" instance=ExtResource("1_codyy")]
+unique_name_in_owner = true
+layout_mode = 2
+info_name = "_stat_score_f_"
+post_texture = ExtResource("6_35wsp")
+label_settings = ExtResource("4_x7x1j")
+
+[node name="TotalMoneyEarn" parent="PanelContainer/ScrollContainer/MarginContainer/VBox" instance=ExtResource("1_codyy")]
+unique_name_in_owner = true
+layout_mode = 2
+info_name = "_stat_money_"
+post_texture = ExtResource("5_uy6wx")
+label_settings = ExtResource("4_x7x1j")
+
+[node name="TotalKill" parent="PanelContainer/ScrollContainer/MarginContainer/VBox" instance=ExtResource("1_codyy")]
+unique_name_in_owner = true
+layout_mode = 2
+info_name = "_stat_kills_"
+post_texture = ExtResource("3_b1ik2")
+label_settings = ExtResource("4_x7x1j")
+
+[node name="TotalArenaClamp" parent="PanelContainer/ScrollContainer/MarginContainer/VBox" instance=ExtResource("1_codyy")]
+unique_name_in_owner = true
+layout_mode = 2
+info_name = "_stat_zone_"
+post_texture = ExtResource("4_q1iq1")
+label_settings = ExtResource("4_x7x1j")
+
+[node name="TotalDeath" parent="PanelContainer/ScrollContainer/MarginContainer/VBox" instance=ExtResource("1_codyy")]
+unique_name_in_owner = true
+layout_mode = 2
+info_name = "_stat_death_"
+post_texture = ExtResource("8_lxeg8")
+label_settings = ExtResource("4_x7x1j")
+
+[node name="TotalTime" parent="PanelContainer/ScrollContainer/MarginContainer/VBox" instance=ExtResource("1_codyy")]
+unique_name_in_owner = true
+layout_mode = 2
+info_name = "_stat_time_"
+label_settings = ExtResource("4_x7x1j")
+
+[node name="Timer" type="Timer" parent="PanelContainer/ScrollContainer/MarginContainer/VBox/TotalTime"]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="PanelContainer/ScrollContainer/MarginContainer/VBox/TotalTime/Timer" to="." method="_on_timer_timeout"]

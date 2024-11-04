@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxku21rl6okjj"]
+
+[ext_resource type="Script" path="res://ui_menu/Component/over_info.gd" id="1_44mmw"]
+[ext_resource type="PackedScene" uid="uid://dh6bt760ed0ff" path="res://ui_menu/Component/label_typing.tscn" id="2_x3sht"]
+[ext_resource type="LabelSettings" uid="uid://ddwnixltm1o0c" path="res://game/Game_asset/tres/info_label_settings.tres" id="3_80sg3"]
+
+[node name="OverInfo" type="HBoxContainer"]
+offset_right = 687.0
+offset_bottom = 64.0
+script = ExtResource("1_44mmw")
+
+[node name="BonusContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelName" parent="BonusContainer" instance=ExtResource("2_x3sht")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "info"
+label_settings = ExtResource("3_80sg3")
+
+[node name="LabelValue" parent="BonusContainer" instance=ExtResource("2_x3sht")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "123"
+label_settings = ExtResource("3_80sg3")
+duration = 1.5
+tween_trans = 2
+tween_ease = 2
+type = "Counting"
+
+[node name="BonusTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+stretch_mode = 5
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

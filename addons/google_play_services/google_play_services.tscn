@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bspkpj1ljl4um"]
+
+[ext_resource type="Script" path="res://addons/google_play_services/google_play_services.gd" id="1_knkdi"]
+
+[node name="google_play_services" type="Node"]
+script = ExtResource("1_knkdi")

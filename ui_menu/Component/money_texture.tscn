@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://beu41fhqxe7hs"]
+
+[ext_resource type="Script" path="res://ui_menu/Component/money_texture.gd" id="1_2hcg5"]
+[ext_resource type="Texture2D" uid="uid://b7g6tovgjfe38" path="res://game/Game_asset/ingame/money_type_gold.png" id="1_f8gij"]
+[ext_resource type="PackedScene" uid="uid://dh6bt760ed0ff" path="res://ui_menu/Component/label_typing.tscn" id="3_acjxp"]
+[ext_resource type="LabelSettings" uid="uid://bo72jdq8114ta" path="res://ui_menu/Component/scroll_item_preview/item_money_amount.tres" id="4_yyrbm"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vd3eh"]
+
+[node name="MoneyTexture" type="HBoxContainer"]
+process_mode = 3
+anchors_preset = -1
+anchor_right = 1.11975
+anchor_bottom = 0.0784722
+grow_horizontal = 2
+script = ExtResource("1_2hcg5")
+metadata/_edit_use_anchors_ = true
+
+[node name="HoldTexture" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_vd3eh")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="MoneyIcon" type="TextureRect" parent="HoldTexture"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_f8gij")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoneyLabel" parent="." instance=ExtResource("3_acjxp")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "0
+"
+label_settings = ExtResource("4_yyrbm")
+hide_from_beginning = false
+duration = 1.5
+type = "Counting"
+
+[connection signal="play_finished" from="MoneyLabel" to="." method="_on_money_label_play_finished"]

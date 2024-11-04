@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://bks571bt4lf0i"]
+
+[ext_resource type="Script" path="res://ui_menu/Component/scroll_item_preview/player_preview.gd" id="1_2dqnm"]
+[ext_resource type="PackedScene" uid="uid://efysbk0mf33q" path="res://player/base_player.tscn" id="1_vqr3h"]
+
+[node name="PlayerPreview" type="CenterContainer"]
+self_modulate = Color(0, 0, 0, 1)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -37.5
+offset_right = 37.5
+offset_bottom = 78.0
+grow_horizontal = 2
+script = ExtResource("1_2dqnm")
+
+[node name="HoldNode2D" type="Control" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(118, 120)
+layout_mode = 2
+mouse_filter = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BasePlayer" parent="HoldNode2D" instance=ExtResource("1_vqr3h")]
+unique_name_in_owner = true
+position = Vector2(60, 77)
+scale = Vector2(1.7, 1.7)
+
+[node name="LightEye" parent="HoldNode2D/BasePlayer/PlayerVisual/PlayerPhysics" index="2"]
+range_item_cull_mask = 4
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="gui_input" from="HoldNode2D" to="." method="_on_event_input_gui_input"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="HoldNode2D/BasePlayer"]

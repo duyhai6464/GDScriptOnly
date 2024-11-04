@@ -1,0 +1,161 @@
+[gd_scene load_steps=10 format=3 uid="uid://h36sl4e5ju0o"]
+
+[ext_resource type="Texture2D" uid="uid://dqvvrtn74aoqk" path="res://game/Game_asset/achievement/mystery.png" id="1_6wlpt"]
+[ext_resource type="Script" path="res://ui_menu/Component/achievement_item.gd" id="1_yrum3"]
+[ext_resource type="LabelSettings" uid="uid://bry4nupw3xtsy" path="res://game/Game_asset/tres/achievement_item_name.tres" id="2_frne3"]
+[ext_resource type="LabelSettings" uid="uid://m7g0og3m4q1y" path="res://game/Game_asset/tres/achievement_item_reward.tres" id="3_3iqy7"]
+[ext_resource type="Texture2D" uid="uid://b7g6tovgjfe38" path="res://game/Game_asset/ingame/money_type_gold.png" id="3_677qq"]
+[ext_resource type="LabelSettings" uid="uid://bhittkar8upsp" path="res://game/Game_asset/tres/achievement_item_info.tres" id="3_cwtm2"]
+[ext_resource type="LabelSettings" uid="uid://c3p0k1yeppjhk" path="res://game/Game_asset/tres/achievement_item_process.tres" id="3_o6qgh"]
+[ext_resource type="Texture2D" uid="uid://bowxlpbuuwkk8" path="res://game/Game_asset/achievement/dot_black.png" id="3_ug4tk"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ysmge"]
+size = Vector2(128, 128)
+
+[node name="AchievementItem" type="PanelContainer"]
+self_modulate = Color(0.835294, 0.776471, 0.6, 1)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -272.0
+offset_right = 272.0
+offset_bottom = 168.0
+grow_horizontal = 2
+mouse_filter = 1
+theme_type_variation = &"Panel_type_6"
+script = ExtResource("1_yrum3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Hbox" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Hbox"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Hbox/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HoldIcon" type="TextureRect" parent="MarginContainer/Hbox/VBoxContainer/MarginContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_ysmge")
+stretch_mode = 2
+
+[node name="IconTexture" type="TextureRect" parent="MarginContainer/Hbox/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("1_6wlpt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RewardContainer" type="MarginContainer" parent="MarginContainer/Hbox/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = -5
+theme_override_constants/margin_bottom = -15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Hbox/VBoxContainer/RewardContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RewardLabel" type="Label" parent="MarginContainer/Hbox/VBoxContainer/RewardContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1000"
+label_settings = ExtResource("3_3iqy7")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Hbox/VBoxContainer/RewardContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_677qq")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Hbox"]
+self_modulate = Color(0, 0, 0, 0.2)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_type_variation = &"Panel_type_6"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Hbox/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Hbox/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -20
+
+[node name="NameLabel" type="Label" parent="MarginContainer/Hbox/PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "???"
+label_settings = ExtResource("2_frne3")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Hbox/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_right = -10
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Hbox/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("3_ug4tk")
+stretch_mode = 5
+
+[node name="DotState" type="TextureRect" parent="MarginContainer/Hbox/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/TextureRect"]
+unique_name_in_owner = true
+modulate = Color(2, 2, 2, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InfoLabel" type="Label" parent="MarginContainer/Hbox/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "_play_more_to_unlock_"
+label_settings = ExtResource("3_cwtm2")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ProcessLabel" type="Label" parent="MarginContainer/Hbox/PanelContainer/VBoxContainer/InfoLabel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 8
+text = "0/0"
+label_settings = ExtResource("3_o6qgh")
+vertical_alignment = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

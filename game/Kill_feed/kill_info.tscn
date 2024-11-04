@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4iw47j5nfebq"]
+
+[ext_resource type="Script" path="res://game/Kill_feed/kill_info.gd" id="1_15fw7"]
+[ext_resource type="Texture2D" uid="uid://dfjc5tibx2swa" path="res://game/Game_asset/ingame/kill.png" id="2_amdh5"]
+[ext_resource type="LabelSettings" uid="uid://cg7qbgw3buwok" path="res://game/Game_asset/tres/killfeed_label_settings.tres" id="2_sq868"]
+
+[node name="KillInfo" type="HBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(0, 60)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -95.0
+offset_bottom = 42.0
+grow_horizontal = 0
+theme_override_constants/separation = 10
+alignment = 2
+script = ExtResource("1_15fw7")
+
+[node name="Panel1" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0.964706, 0.670588, 0.713726, 1)
+layout_mode = 2
+theme_type_variation = &"Panel_type_6"
+
+[node name="Label1" type="Label" parent="Panel1"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "X"
+label_settings = ExtResource("2_sq868")
+
+[node name="Icon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_amdh5")
+expand_mode = 3
+
+[node name="Panel2" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(1, 0.654902, 0, 1)
+layout_mode = 2
+theme_type_variation = &"Panel_type_6"
+
+[node name="Label2" type="Label" parent="Panel2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Y"
+label_settings = ExtResource("2_sq868")

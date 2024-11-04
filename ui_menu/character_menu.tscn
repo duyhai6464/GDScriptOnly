@@ -1,0 +1,141 @@
+[gd_scene load_steps=10 format=3 uid="uid://bboigjrtmbfqi"]
+
+[ext_resource type="Script" path="res://ui_menu/character_menu.gd" id="1_c5u1g"]
+[ext_resource type="Texture2D" uid="uid://bbgv8mbhyljuh" path="res://Fonts/icon/back.png" id="1_mp8x1"]
+[ext_resource type="PackedScene" uid="uid://ccwlwsqthv0h5" path="res://player/ui_player.tscn" id="2_c47ij"]
+[ext_resource type="PackedScene" uid="uid://bks571bt4lf0i" path="res://ui_menu/Component/scroll_item_preview/player_preview.tscn" id="3_jd3c8"]
+[ext_resource type="LabelSettings" uid="uid://dhd42pbh7fcki" path="res://ui_menu/Component/scroll_item_preview/item_name.tres" id="4_u0dfb"]
+[ext_resource type="LabelSettings" uid="uid://ddwnixltm1o0c" path="res://game/Game_asset/tres/info_label_settings.tres" id="5_0xkkt"]
+[ext_resource type="PackedScene" uid="uid://cqa2arqg4b12r" path="res://ui_menu/Component/list_scroll_color_player.tscn" id="6_mj5gh"]
+[ext_resource type="PackedScene" uid="uid://njaimyaim0tg" path="res://ui_menu/Component/list_scroll_zone_player.tscn" id="8_nnmrv"]
+[ext_resource type="PackedScene" uid="uid://b1o1tcu43fyc3" path="res://ui_menu/Component/list_scroll_body_player.tscn" id="12_lqotw"]
+
+[node name="CharacterMenu" type="PanelContainer"]
+process_mode = 3
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_c5u1g")
+
+[node name="Menu" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 125
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+layout_mode = 2
+
+[node name="PreviewPlayer" type="VBoxContainer" parent="Menu/VBoxContainer"]
+layout_mode = 2
+
+[node name="UI_player" parent="Menu/VBoxContainer/PreviewPlayer" instance=ExtResource("2_c47ij")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+img_size = 48
+font_size = 39
+
+[node name="PlayerPreview" parent="Menu/VBoxContainer/PreviewPlayer" instance=ExtResource("3_jd3c8")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PreviewLabel" type="Label" parent="Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "_character_custom_"
+label_settings = ExtResource("4_u0dfb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Menu/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="Menu/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_vertical = 1
+text = "_character_name_"
+label_settings = ExtResource("5_0xkkt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextEdit" type="LineEdit" parent="Menu/VBoxContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 36
+max_length = 40
+clear_button_enabled = true
+
+[node name="ColorLabel" type="Label" parent="Menu/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_vertical = 1
+text = "_character_color_"
+label_settings = ExtResource("5_0xkkt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ListScrollColorPlayer" parent="Menu/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("6_mj5gh")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SkinBodyLabel" type="Label" parent="Menu/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_vertical = 1
+text = "_character_body_"
+label_settings = ExtResource("5_0xkkt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ListScrollBodyPlayer" parent="Menu/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("12_lqotw")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="skinZoneLabel" type="Label" parent="Menu/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_vertical = 1
+text = "_character_zone_"
+label_settings = ExtResource("5_0xkkt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ListScrollZonePlayer" parent="Menu/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("8_nnmrv")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="Menu/VBoxContainer"]
+custom_minimum_size = Vector2(390, 130)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+icon = ExtResource("1_mp8x1")
+icon_alignment = 1
+
+[connection signal="text_submitted" from="Menu/VBoxContainer/ScrollContainer/VBoxContainer/TextEdit" to="." method="_on_text_edit_text_submitted"]
+[connection signal="selected" from="Menu/VBoxContainer/ScrollContainer/VBoxContainer/ListScrollColorPlayer" to="." method="_on_list_scroll_color_player_selected"]
+[connection signal="selected" from="Menu/VBoxContainer/ScrollContainer/VBoxContainer/ListScrollBodyPlayer" to="." method="_on_list_scroll_body_player_selected"]
+[connection signal="selected" from="Menu/VBoxContainer/ScrollContainer/VBoxContainer/ListScrollZonePlayer" to="." method="_on_list_scroll_zone_player_selected"]
+[connection signal="pressed" from="Menu/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

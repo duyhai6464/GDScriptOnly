@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw7rqvugwayk5"]
+
+[ext_resource type="Script" path="res://math&logicScript/banner_ads.gd" id="1_vercv"]
+
+[node name="BannerAds" type="Node"]
+script = ExtResource("1_vercv")

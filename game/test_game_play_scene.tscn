@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://5ghr4nrftje8"]
+
+[ext_resource type="PackedScene" uid="uid://c364037mrfao2" path="res://game/game_play.tscn" id="1_runsv"]
+[ext_resource type="Script" path="res://game/test_game_play_scene.gd" id="1_s1ojp"]
+[ext_resource type="PackedScene" uid="uid://cqa2arqg4b12r" path="res://ui_menu/Component/list_scroll_color_player.tscn" id="3_hftps"]
+[ext_resource type="PackedScene" uid="uid://counbd3olo7pq" path="res://player/camera_player.tscn" id="3_pweye"]
+
+[node name="TestGamePlayScene" type="Node"]
+process_mode = 3
+script = ExtResource("1_s1ojp")
+
+[node name="Gameplay" parent="." instance=ExtResource("1_runsv")]
+unique_name_in_owner = true
+
+[node name="camera" parent="." instance=ExtResource("3_pweye")]
+unique_name_in_owner = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="ToolBox" type="VBoxContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 183.0
+grow_horizontal = 2
+size_flags_vertical = 0
+
+[node name="ListScrollColorPlayer" parent="CanvasLayer/ToolBox" instance=ExtResource("3_hftps")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ToolBox"]
+layout_mode = 2
+
+[node name="Button1Dr" type="Button" parent="CanvasLayer/ToolBox/HBoxContainer"]
+layout_mode = 2
+text = "dr"
+flat = true
+
+[node name="Button2Mov" type="Button" parent="CanvasLayer/ToolBox/HBoxContainer"]
+layout_mode = 2
+text = "mov"
+flat = true
+
+[node name="Button3Su" type="Button" parent="CanvasLayer/ToolBox/HBoxContainer"]
+layout_mode = 2
+text = "su"
+flat = true
+
+[node name="Button4Cam" type="Button" parent="CanvasLayer/ToolBox/HBoxContainer"]
+layout_mode = 2
+text = "cam"
+flat = true
+
+[connection signal="selected" from="CanvasLayer/ToolBox/ListScrollColorPlayer" to="." method="_on_list_scroll_color_player_selected"]
+[connection signal="pressed" from="CanvasLayer/ToolBox/HBoxContainer/Button1Dr" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ToolBox/HBoxContainer/Button2Mov" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/ToolBox/HBoxContainer/Button3Su" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/ToolBox/HBoxContainer/Button4Cam" to="." method="_on_button_4_pressed"]

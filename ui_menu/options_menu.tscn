@@ -1,0 +1,194 @@
+[gd_scene load_steps=24 format=3 uid="uid://cgotd3qnrc1bw"]
+
+[ext_resource type="Script" path="res://ui_menu/options_menu.gd" id="1_vnhf3"]
+[ext_resource type="Texture2D" uid="uid://ookli4p2gf13" path="res://Fonts/icon/swipe.png" id="2_wgg8d"]
+[ext_resource type="Texture2D" uid="uid://bix6h1v08qtdg" path="res://Fonts/icon/wasd.png" id="3_dmeav"]
+[ext_resource type="Texture2D" uid="uid://b0k8cuh5yowms" path="res://Fonts/icon/joystick.png" id="4_3bcp4"]
+[ext_resource type="Texture2D" uid="uid://k88p4p0kl0mr" path="res://Fonts/icon/remote.png" id="5_byky3"]
+[ext_resource type="Texture2D" uid="uid://ddrqgjnefblas" path="res://Fonts/icon/vnflag.png" id="6_xx1x3"]
+[ext_resource type="Texture2D" uid="uid://c1v30p6l8dk0p" path="res://Fonts/icon/enflag.png" id="7_wglur"]
+[ext_resource type="Texture2D" uid="uid://c7esxhsol83qx" path="res://Fonts/icon/langflag.png" id="8_8p40l"]
+[ext_resource type="Texture2D" uid="uid://c5a6janvv3sbr" path="res://Fonts/icon/sound.png" id="9_v7vjo"]
+[ext_resource type="Texture2D" uid="uid://dri6buhaftu2l" path="res://Fonts/icon/mute.png" id="10_edgk4"]
+[ext_resource type="Texture2D" uid="uid://dr8uykalpi5dy" path="res://Fonts/icon/music.png" id="11_tal8c"]
+[ext_resource type="PackedScene" uid="uid://cmj0tkuifo87b" path="res://ui_menu/Component/button_touch.tscn" id="12_kwy50"]
+[ext_resource type="Texture2D" uid="uid://bbgv8mbhyljuh" path="res://Fonts/icon/back.png" id="12_vkkxp"]
+[ext_resource type="Texture2D" uid="uid://f7cfja8jlf8p" path="res://Fonts/icon/num1.png" id="13_ugspm"]
+[ext_resource type="Texture2D" uid="uid://cels0fmwtgm6u" path="res://Fonts/icon/num2.png" id="14_8b5ui"]
+[ext_resource type="Texture2D" uid="uid://ls8eq0jcp874" path="res://Fonts/icon/num3.png" id="15_33t8f"]
+[ext_resource type="Texture2D" uid="uid://cpt8xgrmtlupw" path="res://Fonts/icon/num4.png" id="16_p5fqj"]
+[ext_resource type="Texture2D" uid="uid://dumcsp6cawwio" path="res://Fonts/icon/num5.png" id="17_u8llm"]
+[ext_resource type="LabelSettings" uid="uid://dfeodggbe0nxf" path="res://game/Game_asset/tres/stat_info_label_settings.tres" id="18_bii28"]
+[ext_resource type="Texture2D" uid="uid://bowxlpbuuwkk8" path="res://game/Game_asset/achievement/dot_black.png" id="18_cfj0i"]
+[ext_resource type="Texture2D" uid="uid://b7ldvcpfi5n5i" path="res://game/Game_asset/achievement/dot_red.png" id="19_syyen"]
+[ext_resource type="LabelSettings" uid="uid://ddwnixltm1o0c" path="res://game/Game_asset/tres/info_label_settings.tres" id="21_1pfes"]
+[ext_resource type="Texture2D" uid="uid://x4oovbarwdve" path="res://Fonts/icon/google-play-games.png" id="21_i87oc"]
+
+[node name="OptionsMenu" type="PanelContainer"]
+process_mode = 3
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_vnhf3")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="empty" type="Control" parent="Margin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.32
+
+[node name="InputButtonTouch" parent="Margin/VBoxContainer" instance=ExtResource("12_kwy50")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("5_byky3")
+icon_alignment = 0
+options = Array[Texture2D]([ExtResource("2_wgg8d"), ExtResource("3_dmeav"), ExtResource("4_3bcp4")])
+options_layoutpreset = 6
+switch_animation = 1
+
+[node name="empty2" type="Control" parent="Margin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.32
+
+[node name="LanguageButtonTouch" parent="Margin/VBoxContainer" instance=ExtResource("12_kwy50")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("8_8p40l")
+icon_alignment = 0
+options = Array[Texture2D]([ExtResource("7_wglur"), ExtResource("6_xx1x3")])
+options_layoutpreset = 6
+switch_animation = 1
+
+[node name="empty3" type="Control" parent="Margin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.32
+
+[node name="Sounds" type="HBoxContainer" parent="Margin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="SoundButtonTouch" parent="Margin/VBoxContainer/Sounds" instance=ExtResource("12_kwy50")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("9_v7vjo")
+options = Array[Texture2D]([ExtResource("10_edgk4")])
+options_include_empty = 1
+switch_animation = 2
+
+[node name="empty4" type="Control" parent="Margin/VBoxContainer/Sounds"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="MusicButtonTouch" parent="Margin/VBoxContainer/Sounds" instance=ExtResource("12_kwy50")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("11_tal8c")
+options = Array[Texture2D]([ExtResource("10_edgk4"), ExtResource("13_ugspm"), ExtResource("14_8b5ui"), ExtResource("15_33t8f"), ExtResource("16_p5fqj"), ExtResource("17_u8llm")])
+switch_animation = 2
+
+[node name="empty4" type="Control" parent="Margin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="PlayAccountContainer" type="VBoxContainer" parent="Margin/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="PrivacyConsentContainer" type="HBoxContainer" parent="Margin/VBoxContainer/PlayAccountContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Margin/VBoxContainer/PlayAccountContainer/PrivacyConsentContainer"]
+layout_mode = 2
+texture = ExtResource("18_cfj0i")
+stretch_mode = 5
+
+[node name="StatePrivacyConsentTexture" type="TextureRect" parent="Margin/VBoxContainer/PlayAccountContainer/PrivacyConsentContainer/TextureRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_syyen")
+
+[node name="PrivacyConsentLabel" type="Label" parent="Margin/VBoxContainer/PlayAccountContainer/PrivacyConsentContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "_OPTED_OUT_"
+label_settings = ExtResource("18_bii28")
+
+[node name="ChangeAccountContainer" type="HBoxContainer" parent="Margin/VBoxContainer/PlayAccountContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ChangeAccountTexture" type="TextureRect" parent="Margin/VBoxContainer/PlayAccountContainer/ChangeAccountContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("21_i87oc")
+
+[node name="ChangeAccountLabel" type="Label" parent="Margin/VBoxContainer/PlayAccountContainer/ChangeAccountContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "_log_in_"
+label_settings = ExtResource("21_1pfes")
+
+[node name="empty5" type="Control" parent="Margin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="Go_back" type="Button" parent="Margin/VBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(390, 130)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+icon = ExtResource("12_vkkxp")
+icon_alignment = 1
+
+[connection signal="select_changed" from="Margin/VBoxContainer/InputButtonTouch" to="." method="_on_input_button_touch_select_changed"]
+[connection signal="select_changed" from="Margin/VBoxContainer/LanguageButtonTouch" to="." method="_on_language_button_touch_select_changed"]
+[connection signal="select_changed" from="Margin/VBoxContainer/Sounds/SoundButtonTouch" to="." method="_on_sound_button_touch_select_changed"]
+[connection signal="select_changed" from="Margin/VBoxContainer/Sounds/MusicButtonTouch" to="." method="_on_music_button_touch_select_changed"]
+[connection signal="gui_input" from="Margin/VBoxContainer/PlayAccountContainer/PrivacyConsentContainer" to="." method="_on_privacy_consent_container_gui_input"]
+[connection signal="gui_input" from="Margin/VBoxContainer/PlayAccountContainer/ChangeAccountContainer" to="." method="_on_change_account_container_gui_input"]
+[connection signal="pressed" from="Margin/VBoxContainer/Go_back" to="." method="_on_go_back_pressed"]

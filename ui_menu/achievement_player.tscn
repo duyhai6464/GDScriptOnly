@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuivh7vlkjk6d"]
+
+[ext_resource type="PackedScene" uid="uid://h36sl4e5ju0o" path="res://ui_menu/Component/achievement_item.tscn" id="1_pbd1v"]
+[ext_resource type="Script" path="res://ui_menu/achievement_player.gd" id="1_wjyyq"]
+
+[node name="AchievementPlayer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_wjyyq")
+metadata/_tab_index = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+self_modulate = Color(0.152941, 0.317647, 0.435294, 1)
+layout_mode = 2
+theme_type_variation = &"Panel_type_3"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 20
+
+[node name="VBox" type="VBoxContainer" parent="PanelContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="Achievement1" parent="PanelContainer/ScrollContainer/MarginContainer/VBox" instance=ExtResource("1_pbd1v")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="clicked" from="PanelContainer/ScrollContainer/MarginContainer/VBox/Achievement1" to="." method="showAchievements"]

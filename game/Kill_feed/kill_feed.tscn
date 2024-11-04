@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs8i2nyh4bt6t"]
+
+[ext_resource type="Script" path="res://game/Kill_feed/kill_feed.gd" id="1_xwv13"]
+
+[node name="KillFeed" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xwv13")

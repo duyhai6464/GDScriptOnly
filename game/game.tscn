@@ -1,0 +1,121 @@
+[gd_scene load_steps=9 format=3 uid="uid://lpqs6a2tgpv0"]
+
+[ext_resource type="Script" path="res://game/game_control.gd" id="1_502ny"]
+[ext_resource type="PackedScene" uid="uid://c364037mrfao2" path="res://game/game_play.tscn" id="1_xgtlx"]
+[ext_resource type="PackedScene" uid="uid://yqhnja54xgja" path="res://player/control_mode/player_control_mode.tscn" id="3_5rdao"]
+[ext_resource type="Texture2D" uid="uid://cky3bfkagacul" path="res://Fonts/icon/pause.png" id="3_hnmby"]
+[ext_resource type="PackedScene" uid="uid://cgotd3qnrc1bw" path="res://ui_menu/options_menu.tscn" id="4_8a33x"]
+[ext_resource type="Texture2D" uid="uid://ctprskywsj055" path="res://Fonts/icon/resume.png" id="4_j3rj2"]
+[ext_resource type="Texture2D" uid="uid://cv76wejf0up61" path="res://Fonts/icon/setting.png" id="5_j1lvd"]
+[ext_resource type="Texture2D" uid="uid://klxeurkwtip4" path="res://Fonts/icon/home.png" id="6_0fj8c"]
+
+[node name="Game_main" type="Node"]
+process_mode = 3
+script = ExtResource("1_502ny")
+
+[node name="Game_play" parent="." instance=ExtResource("1_xgtlx")]
+unique_name_in_owner = true
+
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="PopupMenu" type="Control" parent="PauseLayer"]
+unique_name_in_owner = true
+process_mode = 2
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="IngameUI" type="Control" parent="PauseLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Player_control_mode" parent="PauseLayer/IngameUI" instance=ExtResource("3_5rdao")]
+
+[node name="Pause_button" type="Button" parent="PauseLayer/IngameUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -146.0
+offset_top = 12.0
+offset_right = -16.0
+offset_bottom = 142.0
+grow_horizontal = 0
+focus_mode = 0
+theme_type_variation = &"FlatButton"
+icon = ExtResource("3_hnmby")
+flat = true
+icon_alignment = 1
+
+[node name="Pause_menu" type="MarginContainer" parent="PauseLayer"]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_right = 250
+
+[node name="Menu_buttons" type="VBoxContainer" parent="PauseLayer/Pause_menu"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseLayer/Pause_menu/Menu_buttons"]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"menuButton"
+icon = ExtResource("4_j3rj2")
+icon_alignment = 1
+
+[node name="OptionsButton" type="Button" parent="PauseLayer/Pause_menu/Menu_buttons"]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"menuButton"
+icon = ExtResource("5_j1lvd")
+icon_alignment = 1
+
+[node name="MainmenuButton" type="Button" parent="PauseLayer/Pause_menu/Menu_buttons"]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"menuButton"
+icon = ExtResource("6_0fj8c")
+icon_alignment = 1
+
+[node name="OptionsMenu" parent="PauseLayer/Pause_menu" instance=ExtResource("4_8a33x")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+
+[connection signal="main_player_death" from="Game_play" to="." method="_on_game_play_main_player_death"]
+[connection signal="show_game_over" from="Game_play" to="." method="_on_game_play_show_game_over"]
+[connection signal="pressed" from="PauseLayer/IngameUI/Pause_button" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="PauseLayer/IngameUI/Pause_button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PauseLayer/Pause_menu/Menu_buttons/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseLayer/Pause_menu/Menu_buttons/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="PauseLayer/Pause_menu/Menu_buttons/MainmenuButton" to="." method="_on_mainmenu_button_pressed"]
+[connection signal="go_back" from="PauseLayer/Pause_menu/OptionsMenu" to="." method="_on_options_menu_go_back"]

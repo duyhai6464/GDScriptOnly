@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bppwnj01yxwi7"]
+
+[ext_resource type="Script" path="res://ui_menu/confirm_quit.gd" id="1_jeds3"]
+[ext_resource type="PackedScene" uid="uid://cnrmkmovjuhik" path="res://ui_menu/Component/popup_confirm.tscn" id="2_y3dua"]
+
+[node name="ConfirmQuit" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_jeds3")
+
+[node name="PopupConfirm" parent="." instance=ExtResource("2_y3dua")]
+layer = 8
+confirm_text = "_confirm_quit_"
+
+[connection signal="CANCEL" from="PopupConfirm" to="." method="_on_popup_confirm_cancel"]
+[connection signal="OK" from="PopupConfirm" to="." method="_on_popup_confirm_ok"]

@@ -1,0 +1,172 @@
+[gd_scene load_steps=12 format=3 uid="uid://75icy2ni3kru"]
+
+[ext_resource type="Script" path="res://ui_menu/Component/scroll_item.gd" id="1_2qqgv"]
+[ext_resource type="LabelSettings" uid="uid://dhd42pbh7fcki" path="res://ui_menu/Component/scroll_item_preview/item_name.tres" id="2_esrnu"]
+[ext_resource type="LabelSettings" uid="uid://de803cw7pcqoq" path="res://ui_menu/Component/scroll_item_preview/item_type.tres" id="3_72f1d"]
+[ext_resource type="LabelSettings" uid="uid://tciteessqesj" path="res://ui_menu/Component/scroll_item_preview/item_info.tres" id="4_2a3sv"]
+[ext_resource type="Texture2D" uid="uid://cbllp3txc5rrk" path="res://game/Game_asset/ingame/square.png" id="4_lviqg"]
+[ext_resource type="Texture2D" uid="uid://cgocgwwurbqrc" path="res://game/Game_asset/ingame/money_type_diamond.png" id="5_iyrto"]
+[ext_resource type="LabelSettings" uid="uid://bo72jdq8114ta" path="res://ui_menu/Component/scroll_item_preview/item_money_amount.tres" id="5_o4i1b"]
+[ext_resource type="Texture2D" uid="uid://qptlhyqmitqa" path="res://ui_menu/Component/scroll_item_preview/sale_tag.png" id="7_yy5lr"]
+[ext_resource type="LabelSettings" uid="uid://dwjyi7tmp85ua" path="res://ui_menu/Component/scroll_item_preview/item_sale_tag.tres" id="8_6yo4c"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gcyiq"]
+size = Vector2(1, 180)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3kcku"]
+size = Vector2(64, 64)
+
+[node name="ScrollItem" type="PanelContainer"]
+self_modulate = Color(0.227451, 0.313726, 0.419608, 1)
+light_mask = 4
+visibility_layer = 4
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -206.0
+offset_right = 206.0
+offset_bottom = 309.0
+grow_horizontal = 2
+mouse_filter = 1
+theme_type_variation = &"Panel_type_6"
+script = ExtResource("1_2qqgv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Minsize" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="LabelName" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Name item"
+label_settings = ExtResource("2_esrnu")
+horizontal_alignment = 1
+
+[node name="LabelType" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "type item"
+label_settings = ExtResource("3_72f1d")
+horizontal_alignment = 1
+
+[node name="Placehold" type="TextureRect" parent="VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_gcyiq")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/Placehold"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spec" type="NinePatchRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+texture = ExtResource("4_lviqg")
+region_rect = Rect2(-10, 7, 84, 50)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_right = 25
+
+[node name="LabelInfo" type="Label" parent="VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 165)
+layout_mode = 2
+text = "Info item sadasd sada sdas as sadasd  asdasdasd"
+label_settings = ExtResource("4_2a3sv")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="PanelMoney" type="PanelContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="MoneyBox" type="HBoxContainer" parent="VBoxContainer/PanelMoney"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Placehold" type="TextureRect" parent="VBoxContainer/PanelMoney/MoneyBox"]
+self_modulate = Color(0, 0, 0, 0)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_3kcku")
+stretch_mode = 5
+
+[node name="TextureTypeMoney" type="TextureRect" parent="VBoxContainer/PanelMoney/MoneyBox/Placehold"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_iyrto")
+expand_mode = 1
+
+[node name="LabelMoneyAmount" type="Label" parent="VBoxContainer/PanelMoney/MoneyBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "999"
+label_settings = ExtResource("5_o4i1b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelOwner" type="Label" parent="VBoxContainer/PanelMoney"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "_owner_"
+label_settings = ExtResource("3_72f1d")
+horizontal_alignment = 1
+
+[node name="EventInput" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+
+[node name="TextureSale" type="TextureRect" parent="EventInput"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -87.5
+offset_top = -94.0
+offset_right = 18.5
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("7_yy5lr")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_lock_ = true
+
+[node name="LabelSale" type="Label" parent="EventInput/TextureSale"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -4.0
+offset_top = 60.0
+offset_right = 73.0
+offset_bottom = 128.0
+rotation = -0.785398
+text = "50%"
+label_settings = ExtResource("8_6yo4c")
+metadata/_edit_lock_ = true
+
+[connection signal="gui_input" from="EventInput" to="." method="_on_event_input_gui_input"]
+[connection signal="mouse_entered" from="EventInput" to="." method="_on_event_input_mouse_entered"]
+[connection signal="mouse_exited" from="EventInput" to="." method="_on_event_input_mouse_exited"]

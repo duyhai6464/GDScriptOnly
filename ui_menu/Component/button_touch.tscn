@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmj0tkuifo87b"]
+
+[ext_resource type="Script" path="res://ui_menu/Component/button_touch.gd" id="1_b5cbg"]
+
+[node name="ButtonTouch" type="Button"]
+offset_right = 32.0
+offset_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+keep_pressed_outside = true
+icon_alignment = 1
+script = ExtResource("1_b5cbg")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 5
+
+[node name="FrontTexture" type="TextureRect" parent="TextureRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]

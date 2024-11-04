@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://ds3bm0ko8hpg1"]
+
+[ext_resource type="Script" path="res://game/death_menu.gd" id="1_51o4r"]
+[ext_resource type="PackedScene" uid="uid://dh6bt760ed0ff" path="res://ui_menu/Component/label_typing.tscn" id="2_8yv54"]
+[ext_resource type="LabelSettings" uid="uid://cay041kxb6an4" path="res://game/Game_asset/tres/time_respawn_label_settings.tres" id="3_e2x04"]
+[ext_resource type="LabelSettings" uid="uid://d1s1p3tfjmkps" path="res://game/Game_asset/tres/death_menu_notify_game.tres" id="4_yxaht"]
+[ext_resource type="LabelSettings" uid="uid://dw8gnbbanhief" path="res://game/Game_asset/tres/death_menu_notify_enemy.tres" id="5_xqiuk"]
+[ext_resource type="Texture2D" uid="uid://cnb0uheqytn00" path="res://Fonts/icon/replay.png" id="6_ci53l"]
+[ext_resource type="Texture2D" uid="uid://bbgv8mbhyljuh" path="res://Fonts/icon/back.png" id="7_dcosf"]
+
+[node name="DeathMenu" type="PanelContainer"]
+process_mode = 3
+modulate = Color(1, 1, 1, 0.752941)
+self_modulate = Color(0.227451, 0.313726, 0.419608, 1)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -183.0
+offset_right = -14.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"Panel_type_3"
+script = ExtResource("1_51o4r")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TimeRespawn" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_8yv54")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "99"
+label_settings = ExtResource("3_e2x04")
+horizontal_alignment = 1
+tween_trans = 0
+type = "Counting"
+
+[node name="NotifyGame" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_8yv54")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "á đù ngon nha "
+label_settings = ExtResource("4_yxaht")
+horizontal_alignment = 1
+duration = 1.5
+tween_trans = 0
+
+[node name="NotifyEnemy" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_8yv54")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+text = "maho haahhahah"
+label_settings = ExtResource("5_xqiuk")
+horizontal_alignment = 1
+duration = 1.5
+tween_trans = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="RejoinButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "_rejoin_"
+icon = ExtResource("6_ci53l")
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("7_dcosf")
+
+[connection signal="play_finished" from="MarginContainer/VBoxContainer/TimeRespawn" to="." method="_on_time_respawn_play_finished"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/RejoinButton" to="." method="_on_rejoin_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

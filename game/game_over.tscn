@@ -1,0 +1,503 @@
+[gd_scene load_steps=14 format=3 uid="uid://b175cg3ie4jj3"]
+
+[ext_resource type="Script" path="res://game/game_over.gd" id="1_8anin"]
+[ext_resource type="PackedScene" uid="uid://beu41fhqxe7hs" path="res://ui_menu/Component/money_texture.tscn" id="2_36ge3"]
+[ext_resource type="PackedScene" uid="uid://cd64vi6gvtbod" path="res://ui_menu/watch_video_button.tscn" id="3_3ymkp"]
+[ext_resource type="Texture2D" uid="uid://klxeurkwtip4" path="res://Fonts/icon/home.png" id="3_k5oov"]
+[ext_resource type="Texture2D" uid="uid://cgocgwwurbqrc" path="res://game/Game_asset/ingame/money_type_diamond.png" id="3_mic34"]
+[ext_resource type="Texture2D" uid="uid://bi7d7pcsl0psv" path="res://Fonts/icon/continue.png" id="4_17atc"]
+[ext_resource type="Texture2D" uid="uid://cbllp3txc5rrk" path="res://game/Game_asset/ingame/square.png" id="4_mhg71"]
+[ext_resource type="Texture2D" uid="uid://cnb0uheqytn00" path="res://Fonts/icon/replay.png" id="5_tcocm"]
+
+[sub_resource type="Animation" id="Animation_rpnrd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/MarginContainer/menu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/MarginContainer/menu/Money/Empty:size_flags_stretch_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/MarginContainer/menu/Buttons/PlayAgainButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/MarginContainer/menu/Buttons/BackHomeButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer/MarginContainer/menu/Buttons/ContinueButton:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PanelContainer/MarginContainer/menu/Buttons/ContinueButton:size_flags_stretch_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer/MarginContainer/menu/Summary:theme_override_constants/margin_left")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PanelContainer/MarginContainer/menu/Summary:theme_override_constants/margin_right")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:separation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_7pufa"]
+resource_name = "continue"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/MarginContainer/menu/Buttons/PlayAgainButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.45, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/MarginContainer/menu/Buttons/ContinueButton:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/MarginContainer/menu/Buttons/BackHomeButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.45, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/MarginContainer/menu/Buttons/ContinueButton:size_flags_stretch_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [5.0, 0.1]
+}
+
+[sub_resource type="Animation" id="Animation_w8pi5"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/MarginContainer/menu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/MarginContainer/menu/Buttons/ContinueButton:size_flags_stretch_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 5.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/MarginContainer/menu/Buttons/PlayAgainButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/MarginContainer/menu/Buttons/BackHomeButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qe6ai"]
+resource_name = "show_up"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/MarginContainer/menu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/MarginContainer/menu/Money/Empty:size_flags_stretch_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 2),
+"transitions": PackedFloat32Array(1, 2.14355, 1),
+"update": 0,
+"values": [0.0, 0.0, 8.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/MarginContainer/menu/Buttons/PlayAgainButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/MarginContainer/menu/Buttons/BackHomeButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer/MarginContainer/menu/Buttons/ContinueButton:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PanelContainer/MarginContainer/menu/Buttons/ContinueButton:size_flags_stretch_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1.93187, 1),
+"update": 0,
+"values": [0.0, 5.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer/MarginContainer/menu/Summary:theme_override_constants/margin_left")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [200, 75]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PanelContainer/MarginContainer/menu/Summary:theme_override_constants/margin_right")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [200, 75]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PanelContainer/MarginContainer/menu/ADS/WatchVideoButton")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"play"
+}]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".:separation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [-64.0, 8.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j3rn8"]
+_data = {
+"RESET": SubResource("Animation_rpnrd"),
+"continue": SubResource("Animation_7pufa"),
+"fade_in": SubResource("Animation_w8pi5"),
+"show_up": SubResource("Animation_qe6ai")
+}
+
+[node name="GameOver" type="PanelContainer"]
+process_mode = 3
+self_modulate = Color(4.5, 0.1, 2, 1)
+anchors_preset = -1
+anchor_top = 0.314
+anchor_right = 1.0
+anchor_bottom = 0.686
+offset_left = 16.0
+offset_top = 121.84
+offset_right = -16.0
+offset_bottom = -120.84
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_type_variation = &"Panel_type_1"
+script = ExtResource("1_8anin")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+self_modulate = Color(0.152941, 0.317647, 0.435294, 1)
+layout_mode = 2
+mouse_filter = 1
+theme_type_variation = &"Panel_type_4"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 25
+
+[node name="menu" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Money" type="HBoxContainer" parent="PanelContainer/MarginContainer/menu"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+alignment = 2
+
+[node name="Empty" type="Control" parent="PanelContainer/MarginContainer/menu/Money"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="MoneyTextureDiamond" parent="PanelContainer/MarginContainer/menu/Money" instance=ExtResource("2_36ge3")]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("3_mic34")
+
+[node name="MoneyTextureGold" parent="PanelContainer/MarginContainer/menu/Money" instance=ExtResource("2_36ge3")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Spec" type="NinePatchRect" parent="PanelContainer/MarginContainer/menu"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+texture = ExtResource("4_mhg71")
+region_rect = Rect2(1, 7, 62, 50)
+
+[node name="Summary" type="MarginContainer" parent="PanelContainer/MarginContainer/menu"]
+layout_mode = 2
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 75
+theme_override_constants/margin_bottom = 8
+
+[node name="SummaryPanel" type="PanelContainer" parent="PanelContainer/MarginContainer/menu/Summary"]
+self_modulate = Color(0.615686, 0.615686, 0.615686, 0.25098)
+layout_mode = 2
+theme_type_variation = &"Panel_type_6"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/menu/Summary/SummaryPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+
+[node name="TableInfo" type="VBoxContainer" parent="PanelContainer/MarginContainer/menu/Summary/SummaryPanel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Table" type="VBoxContainer" parent="PanelContainer/MarginContainer/menu/Summary/SummaryPanel/MarginContainer/TableInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = -40
+
+[node name="Spec" type="NinePatchRect" parent="PanelContainer/MarginContainer/menu/Summary/SummaryPanel/MarginContainer/TableInfo"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+texture = ExtResource("4_mhg71")
+region_rect = Rect2(1, 7, 62, 50)
+
+[node name="ADS" type="PanelContainer" parent="PanelContainer/MarginContainer/menu"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="BonusContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/menu/ADS"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 125
+theme_override_constants/margin_right = 125
+
+[node name="WatchVideoButton" parent="PanelContainer/MarginContainer/menu/ADS" instance=ExtResource("3_3ymkp")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="PanelContainer/MarginContainer/menu"]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+
+[node name="PlayAgainButton" type="Button" parent="PanelContainer/MarginContainer/menu/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+icon = ExtResource("5_tcocm")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ContinueButton" type="Button" parent="PanelContainer/MarginContainer/menu/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+focus_mode = 0
+icon = ExtResource("4_17atc")
+icon_alignment = 1
+expand_icon = true
+
+[node name="BackHomeButton" type="Button" parent="PanelContainer/MarginContainer/menu/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+icon = ExtResource("3_k5oov")
+icon_alignment = 1
+expand_icon = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j3rn8")
+}
+
+[connection signal="earned_reward" from="PanelContainer/MarginContainer/menu/ADS/WatchVideoButton" to="." method="_on_watch_video_button_earned_reward"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/menu/Buttons/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/menu/Buttons/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/menu/Buttons/BackHomeButton" to="." method="_on_back_home_button_pressed"]

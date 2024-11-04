@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=3 uid="uid://dc6cq746acmin"]
+
+[ext_resource type="Texture2D" uid="uid://dprxng76xvbkh" path="res://ui_menu/Component/scroll_item_preview/treasureunlock.png" id="1_71mm2"]
+[ext_resource type="Script" path="res://ui_menu/Component/scroll_item_preview/money_box_preview.gd" id="1_oeeqr"]
+[ext_resource type="Texture2D" uid="uid://c4ijlbj55yycq" path="res://ui_menu/Component/scroll_item_preview/particles_selection.png" id="3_2olqj"]
+[ext_resource type="Texture2D" uid="uid://cgocgwwurbqrc" path="res://game/Game_asset/ingame/money_type_diamond.png" id="3_7m4xw"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ulqyt"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_sp3qs"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_iw1ik"]
+curve = SubResource("Curve_sp3qs")
+
+[sub_resource type="Gradient" id="Gradient_jskns"]
+offsets = PackedFloat32Array(0.00549451, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ipks8"]
+gradient = SubResource("Gradient_jskns")
+
+[sub_resource type="Curve" id="Curve_6m63i"]
+_data = [Vector2(0, 0.593407), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qvhhb"]
+curve = SubResource("Curve_6m63i")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n5paq"]
+lifetime_randomness = 0.34
+particle_flag_disable_z = true
+angle_min = -45.0
+angle_max = 45.0
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.8
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_qvhhb")
+color_ramp = SubResource("GradientTexture1D_ipks8")
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.00999998
+anim_speed_max = 0.1
+anim_offset_max = 1.0
+anim_offset_curve = SubResource("CurveTexture_iw1ik")
+
+[node name="MoneyBoxPreview" type="CenterContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -102.5
+offset_right = 102.5
+offset_bottom = 258.0
+grow_horizontal = 2
+script = ExtResource("1_oeeqr")
+
+[node name="HoldBox" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("1_71mm2")
+
+[node name="HoldTypeBox" type="TextureRect" parent="HoldBox"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+offset_left = 77.0
+offset_top = 83.0
+offset_right = 133.0
+offset_bottom = 139.0
+
+[node name="TypeBox" type="TextureRect" parent="HoldBox/HoldTypeBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7m4xw")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="HoldBox"]
+unique_name_in_owner = true
+self_modulate = Color(1.1, 1.1, 1.1, 1)
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_ulqyt")
+position = Vector2(66, 64)
+amount = 6
+process_material = SubResource("ParticleProcessMaterial_n5paq")
+texture = ExtResource("3_2olqj")
+explosiveness = 0.1
+collision_base_size = 0.0
+local_coords = true

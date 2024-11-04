@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://h0gtg0ahajck"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_m406h"]
+[ext_resource type="PackedScene" uid="uid://efysbk0mf33q" path="res://player/base_player.tscn" id="2_kj7sp"]
+[ext_resource type="PackedScene" uid="uid://counbd3olo7pq" path="res://player/camera_player.tscn" id="3_ayn3s"]
+[ext_resource type="PackedScene" uid="uid://ccwlwsqthv0h5" path="res://player/ui_player.tscn" id="4_ih08i"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x4uuw"]
+size = Vector2(64, 56)
+
+[node name="Player" type="Node2D"]
+light_mask = 6
+y_sort_enabled = true
+script = ExtResource("1_m406h")
+
+[node name="BasePlayer" parent="." instance=ExtResource("2_kj7sp")]
+
+[node name="camera_player" parent="." instance=ExtResource("3_ayn3s")]
+
+[node name="UI_player" parent="." instance=ExtResource("4_ih08i")]
+offset_top = -49.0
+offset_bottom = -49.0
+
+[node name="Rect" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = SubResource("PlaceholderTexture2D_x4uuw")
+offset = Vector2(0, -5)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnmr5bmwvp5s2"]
+
+[ext_resource type="Script" path="res://game/global_config.gd" id="1_lfbip"]
+[ext_resource type="PackedScene" uid="uid://bppwnj01yxwi7" path="res://ui_menu/confirm_quit.tscn" id="2_h8j0w"]
+[ext_resource type="Environment" uid="uid://b0h6ec5etckia" path="res://game/Game_asset/tres/worldEnv.tres" id="3_do3q8"]
+
+[node name="GlobalConfig" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_lfbip")
+
+[node name="ConfirmQuit" parent="." instance=ExtResource("2_h8j0w")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_do3q8")

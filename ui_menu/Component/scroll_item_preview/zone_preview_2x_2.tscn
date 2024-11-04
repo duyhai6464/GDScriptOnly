@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://v34jywyuvuu2"]
+
+[ext_resource type="PackedScene" uid="uid://bce1153hr6x" path="res://ui_menu/Component/scroll_item_preview/zone_preview.tscn" id="1_jyf7f"]
+[ext_resource type="Script" path="res://ui_menu/Component/scroll_item_preview/zone_preview_2x_2.gd" id="1_w5ci2"]
+
+[node name="ZonePreview2x2" type="GridContainer"]
+offset_right = 164.0
+offset_bottom = 164.0
+columns = 2
+script = ExtResource("1_w5ci2")
+
+[node name="ZonePreview" parent="." instance=ExtResource("1_jyf7f")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ZonePreview2" parent="." instance=ExtResource("1_jyf7f")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ZonePreview3" parent="." instance=ExtResource("1_jyf7f")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ZonePreview4" parent="." instance=ExtResource("1_jyf7f")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

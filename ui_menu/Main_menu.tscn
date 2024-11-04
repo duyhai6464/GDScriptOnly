@@ -1,0 +1,182 @@
+[gd_scene load_steps=13 format=3 uid="uid://cf8yuf0n0isal"]
+
+[ext_resource type="Script" path="res://ui_menu/Main_menu.gd" id="1_6b2fx"]
+[ext_resource type="PackedScene" uid="uid://cgotd3qnrc1bw" path="res://ui_menu/options_menu.tscn" id="2_lj3jb"]
+[ext_resource type="Texture2D" uid="uid://k2r1mc7snhkh" path="res://Fonts/icon/play.png" id="2_w2d0p"]
+[ext_resource type="Texture2D" uid="uid://cv76wejf0up61" path="res://Fonts/icon/setting.png" id="3_2x16s"]
+[ext_resource type="Texture2D" uid="uid://bmh11t6hxm1av" path="res://Fonts/icon/character.png" id="3_slr6r"]
+[ext_resource type="Texture2D" uid="uid://h3b7hldms83l" path="res://Fonts/icon/shop.png" id="4_g8ip8"]
+[ext_resource type="Texture2D" uid="uid://r4miic823mhl" path="res://Fonts/icon/credit.png" id="5_oj4dt"]
+[ext_resource type="PackedScene" uid="uid://bboigjrtmbfqi" path="res://ui_menu/character_menu.tscn" id="6_4wjas"]
+[ext_resource type="PackedScene" uid="uid://dmxm0p03watx" path="res://ui_menu/mode_game_select_menu.tscn" id="6_rrccq"]
+[ext_resource type="PackedScene" uid="uid://cnd4lxpmotr85" path="res://ui_menu/credit_menu.tscn" id="9_3ssiv"]
+[ext_resource type="PackedScene" uid="uid://cilk15k0xtref" path="res://ui_menu/shop_menu.tscn" id="9_alwrb"]
+[ext_resource type="PackedScene" uid="uid://cfroy2xswmrr8" path="res://ui_menu/background_menu.tscn" id="10_c1prg"]
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6b2fx")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="UIroot" type="Control" parent="UILayer"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI" type="MarginContainer" parent="UILayer/UIroot"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06
+anchor_top = 0.06
+anchor_right = 0.94
+anchor_bottom = 0.88
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="Menu" type="PanelContainer" parent="UILayer/UIroot/UI"]
+unique_name_in_owner = true
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/UIroot/UI/Menu"]
+layout_mode = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 5
+
+[node name="Butons" type="VBoxContainer" parent="UILayer/UIroot/UI/Menu/MarginContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayButton" type="Button" parent="UILayer/UIroot/UI/Menu/MarginContainer/Butons"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "_play_"
+icon = ExtResource("2_w2d0p")
+
+[node name="empty" type="Control" parent="UILayer/UIroot/UI/Menu/MarginContainer/Butons"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="CharacterEditButton" type="Button" parent="UILayer/UIroot/UI/Menu/MarginContainer/Butons"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "_character_"
+icon = ExtResource("3_slr6r")
+
+[node name="empty2" type="Control" parent="UILayer/UIroot/UI/Menu/MarginContainer/Butons"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="ShopButton" type="Button" parent="UILayer/UIroot/UI/Menu/MarginContainer/Butons"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "_shop_"
+icon = ExtResource("4_g8ip8")
+
+[node name="empty3" type="Control" parent="UILayer/UIroot/UI/Menu/MarginContainer/Butons"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="OptionButton" type="Button" parent="UILayer/UIroot/UI/Menu/MarginContainer/Butons"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "_options_"
+icon = ExtResource("3_2x16s")
+
+[node name="empty4" type="Control" parent="UILayer/UIroot/UI/Menu/MarginContainer/Butons"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="CreditButton" type="Button" parent="UILayer/UIroot/UI/Menu/MarginContainer/Butons"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "_credit_"
+icon = ExtResource("5_oj4dt")
+
+[node name="ModeGameSelectMenu" parent="UILayer/UIroot/UI" instance=ExtResource("6_rrccq")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="CharacterMenu" parent="UILayer/UIroot/UI" instance=ExtResource("6_4wjas")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ShopMenu" parent="UILayer/UIroot/UI" instance=ExtResource("9_alwrb")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="OptionsMenu" parent="UILayer/UIroot/UI" instance=ExtResource("2_lj3jb")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="CreditMenu" parent="UILayer/UIroot/UI" instance=ExtResource("9_3ssiv")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Block" type="CenterContainer" parent="UILayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="UILayer/Block"]
+modulate = Color(1.25, 1.25, 1.25, 1)
+self_modulate = Color(0.411195, 0.693384, 0.966043, 1)
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 2
+indeterminate = true
+editor_preview_indeterminate = true
+
+[node name="Background" parent="." instance=ExtResource("10_c1prg")]
+
+[connection signal="pressed" from="UILayer/UIroot/UI/Menu/MarginContainer/Butons/PlayButton" to="." method="_on_play_button_press"]
+[connection signal="pressed" from="UILayer/UIroot/UI/Menu/MarginContainer/Butons/CharacterEditButton" to="." method="_on_character_edit_button_pressed"]
+[connection signal="pressed" from="UILayer/UIroot/UI/Menu/MarginContainer/Butons/ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="UILayer/UIroot/UI/Menu/MarginContainer/Butons/OptionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="UILayer/UIroot/UI/Menu/MarginContainer/Butons/CreditButton" to="." method="_on_credit_button_pressed"]
+[connection signal="game_start_request" from="UILayer/UIroot/UI/ModeGameSelectMenu" to="." method="_on_mode_game_select_menu_game_start_request"]
+[connection signal="go_back" from="UILayer/UIroot/UI/ModeGameSelectMenu" to="." method="_on_mode_game_select_menu_go_back"]
+[connection signal="go_back" from="UILayer/UIroot/UI/CharacterMenu" to="." method="_on_character_menu_go_back"]
+[connection signal="go_back" from="UILayer/UIroot/UI/ShopMenu" to="." method="_on_shop_menu_go_back"]
+[connection signal="go_back" from="UILayer/UIroot/UI/OptionsMenu" to="." method="_on_options_menu_go_back"]
+[connection signal="go_back" from="UILayer/UIroot/UI/CreditMenu" to="." method="_on_credit_menu_go_back"]

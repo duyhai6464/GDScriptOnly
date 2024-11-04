@@ -1,0 +1,124 @@
+[gd_scene load_steps=10 format=3 uid="uid://cnrmkmovjuhik"]
+
+[ext_resource type="Script" path="res://ui_menu/Component/popup_confirm.gd" id="1_vjw6t"]
+[ext_resource type="Theme" uid="uid://ddiqbmdbenvfc" path="res://ui_menu/Component/popup_button_theme.tres" id="2_604iy"]
+[ext_resource type="Texture2D" uid="uid://dtpfvna0jadr8" path="res://Fonts/icon/ok.png" id="3_sndvs"]
+[ext_resource type="Texture2D" uid="uid://d1mjlcn1lycji" path="res://Fonts/icon/cancelled.png" id="4_3bnk0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_krhx5"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_03ceb"]
+action = &"Accept"
+
+[sub_resource type="Shortcut" id="Shortcut_gl5cj"]
+events = [SubResource("InputEventAction_03ceb")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_4hh64"]
+action = &"Refuse"
+
+[sub_resource type="Shortcut" id="Shortcut_k5vwg"]
+events = [SubResource("InputEventAction_4hh64")]
+
+[node name="PopupConfirm" type="CanvasLayer"]
+process_mode = 3
+layer = 7
+visible = false
+script = ExtResource("1_vjw6t")
+
+[node name="Fullscreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HoldPanel" type="Control" parent="Fullscreen"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 207.0
+offset_right = -11.0
+offset_bottom = -255.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Fullscreen/HoldPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -138.0
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="Fullscreen/HoldPanel/MarginContainer"]
+self_modulate = Color(0.227451, 0.313726, 0.419608, 1)
+layout_mode = 2
+mouse_filter = 1
+theme_type_variation = &"Panel_type_5"
+
+[node name="MarginContainer" type="MarginContainer" parent="Fullscreen/HoldPanel/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Fullscreen/HoldPanel/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ConfirmLabel" type="RichTextLabel" parent="Fullscreen/HoldPanel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_krhx5")
+bbcode_enabled = true
+text = "[center]confirm text"
+fit_content = true
+
+[node name="Buttons" type="HBoxContainer" parent="Fullscreen/HoldPanel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="YesButton" type="Button" parent="Fullscreen/HoldPanel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("2_604iy")
+action_mode = 0
+shortcut = SubResource("Shortcut_gl5cj")
+shortcut_in_tooltip = false
+icon = ExtResource("3_sndvs")
+icon_alignment = 1
+
+[node name="NoButton" type="Button" parent="Fullscreen/HoldPanel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("2_604iy")
+theme_type_variation = &"RedButton"
+action_mode = 0
+shortcut = SubResource("Shortcut_k5vwg")
+shortcut_in_tooltip = false
+icon = ExtResource("4_3bnk0")
+icon_alignment = 1
+
+[connection signal="gui_input" from="Fullscreen" to="." method="_on_gui_input"]
+[connection signal="pressed" from="Fullscreen/HoldPanel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Buttons/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="Fullscreen/HoldPanel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Buttons/NoButton" to="." method="_on_no_button_pressed"]

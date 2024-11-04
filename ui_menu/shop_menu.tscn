@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=3 uid="uid://cilk15k0xtref"]
+
+[ext_resource type="Script" path="res://ui_menu/shop_menu.gd" id="1_eavi7"]
+[ext_resource type="PackedScene" uid="uid://d3yiwu2sfsr54" path="res://ui_menu/Component/list_scroll_items.tscn" id="1_qyqd1"]
+[ext_resource type="PackedScene" uid="uid://c4m5q4lo011ot" path="res://ui_menu/special_shop.tscn" id="2_cumf3"]
+[ext_resource type="PackedScene" uid="uid://beu41fhqxe7hs" path="res://ui_menu/Component/money_texture.tscn" id="2_p8ur5"]
+[ext_resource type="Texture2D" uid="uid://cgocgwwurbqrc" path="res://game/Game_asset/ingame/money_type_diamond.png" id="3_q3tku"]
+[ext_resource type="LabelSettings" uid="uid://cvo20pfr8nwuu" path="res://ui_menu/Component/scroll_item_preview/title_name.tres" id="4_y4ao6"]
+[ext_resource type="Texture2D" uid="uid://bbgv8mbhyljuh" path="res://Fonts/icon/back.png" id="5_rqnbc"]
+[ext_resource type="PackedScene" uid="uid://cnrmkmovjuhik" path="res://ui_menu/Component/popup_confirm.tscn" id="8_7jglr"]
+
+[node name="ShopMenu" type="PanelContainer"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_eavi7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Money" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+alignment = 2
+
+[node name="MoneyTextureDiamond" parent="MarginContainer/VBoxContainer/Money" instance=ExtResource("2_p8ur5")]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("3_q3tku")
+
+[node name="MoneyTextureGold" parent="MarginContainer/VBoxContainer/Money" instance=ExtResource("2_p8ur5")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+show_behind_parent = true
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+scroll_deadzone = -10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "_special_shop_"
+label_settings = ExtResource("4_y4ao6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpecialShop" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_cumf3")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "_body_shop_"
+label_settings = ExtResource("4_y4ao6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BodyShop" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_qyqd1")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "_zone_shop_"
+label_settings = ExtResource("4_y4ao6")
+horizontal_alignment = 1
+
+[node name="ZoneShop" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_qyqd1")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "_trade_shop_"
+label_settings = ExtResource("4_y4ao6")
+horizontal_alignment = 1
+
+[node name="TradeShop" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_qyqd1")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="GoBackButton" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(390, 130)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+icon = ExtResource("5_rqnbc")
+icon_alignment = 1
+
+[node name="PopupConfirm" parent="." instance=ExtResource("8_7jglr")]
+unique_name_in_owner = true
+layer = 6
+
+[connection signal="selected" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SpecialShop" to="." method="_on_shop_selected"]
+[connection signal="selected" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/BodyShop" to="." method="_on_shop_selected"]
+[connection signal="selected" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/ZoneShop" to="." method="_on_shop_selected"]
+[connection signal="selected" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/TradeShop" to="." method="_on_shop_selected"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/GoBackButton" to="." method="_on_go_back_button_pressed"]
+[connection signal="CANCEL" from="PopupConfirm" to="." method="_on_popup_confirm_cancel"]
+[connection signal="OK" from="PopupConfirm" to="." method="_on_popup_confirm_ok"]

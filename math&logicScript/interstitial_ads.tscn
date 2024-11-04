@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://iqw3g0div2jd"]
+
+[ext_resource type="Script" path="res://math&logicScript/interstitial_ads.gd" id="1_v2gbi"]
+
+[node name="InterstitialAds" type="Node"]
+script = ExtResource("1_v2gbi")

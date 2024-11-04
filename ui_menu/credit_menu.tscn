@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnd4lxpmotr85"]
+
+[ext_resource type="Script" path="res://ui_menu/credit_menu.gd" id="1_6xfjv"]
+[ext_resource type="Texture2D" uid="uid://bbgv8mbhyljuh" path="res://Fonts/icon/back.png" id="2_3sud3"]
+[ext_resource type="PackedScene" uid="uid://wovembf7fhid" path="res://ui_menu/stat_player.tscn" id="2_djxo5"]
+[ext_resource type="PackedScene" uid="uid://cuivh7vlkjk6d" path="res://ui_menu/achievement_player.tscn" id="3_0dt65"]
+[ext_resource type="Texture2D" uid="uid://ddstxvbcyf85t" path="res://Fonts/icon/star-rating.png" id="3_os760"]
+
+[node name="CreditMenu" type="PanelContainer"]
+process_mode = 3
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6xfjv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 125
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+tab_alignment = 1
+current_tab = 1
+tab_focus_mode = 0
+
+[node name="_stat_" parent="MarginContainer/VBoxContainer/TabContainer" instance=ExtResource("2_djxo5")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="_achievement_" parent="MarginContainer/VBoxContainer/TabContainer" instance=ExtResource("3_0dt65")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="_tutorial_" type="Control" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="RatemeButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "_rate_me_"
+icon = ExtResource("3_os760")
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+icon = ExtResource("2_3sud3")
+icon_alignment = 1
+
+[connection signal="tab_changed" from="MarginContainer/VBoxContainer/TabContainer" to="." method="_on_tab_container_tab_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/RatemeButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

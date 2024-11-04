@@ -1,0 +1,123 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccwlwsqthv0h5"]
+
+[ext_resource type="Script" path="res://player/ui_player.gd" id="1_n0je2"]
+[ext_resource type="LabelSettings" uid="uid://crkcvfxj3xeif" path="res://game/Game_asset/tres/ui_player_label.tres" id="2_6hb3l"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_22dbp"]
+
+[node name="UI_player" type="Control"]
+y_sort_enabled = true
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_n0je2")
+
+[node name="UI" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -108.0
+offset_top = -102.0
+offset_right = 108.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="IconContainer" type="HBoxContainer" parent="UI"]
+unique_name_in_owner = true
+y_sort_enabled = true
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="KillerHold" type="TextureRect" parent="UI/IconContainer"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_22dbp")
+expand_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="UI/IconContainer/KillerHold"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="UI/IconContainer/KillerHold"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="CoinHold" type="TextureRect" parent="UI/IconContainer"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_22dbp")
+expand_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="UI/IconContainer/CoinHold"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="UI/IconContainer/CoinHold"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="DeathHold" type="TextureRect" parent="UI/IconContainer"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_22dbp")
+expand_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="UI/IconContainer/DeathHold"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="UI/IconContainer/DeathHold"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Label" type="Label" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = ExtResource("2_6hb3l")
+horizontal_alignment = 1
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -35)
+scale = Vector2(4.5, 2.6)

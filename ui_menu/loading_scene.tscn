@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjfajnxv77sny"]
+
+[ext_resource type="Script" path="res://ui_menu/LoadingScene.gd" id="1_i4ijd"]
+[ext_resource type="Texture2D" uid="uid://cughljb4vwmet" path="res://icongame/LogoDicon.png" id="2_nbe6j"]
+
+[node name="LoadingScene" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i4ijd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.118581, 0.118581, 0.118581, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1.1, 1.1, 1.1, 1)
+self_modulate = Color(0.990343, 0.351965, 1.92523e-07, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 46.0
+offset_top = -40.0
+offset_right = -46.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.0
+show_percentage = false
+
+[node name="LogoContainer" type="AspectRatioContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -155.0
+offset_right = 400.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LogoDicon" type="TextureRect" parent="LogoContainer"]
+layout_mode = 2
+texture = ExtResource("2_nbe6j")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Light" type="DirectionalLight2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(51, 188)
+color = Color(1, 0.934337, 0.934109, 1)
+energy = 0.0
+shadow_color = Color(0.0491899, 0.23156, 0.42339, 1)

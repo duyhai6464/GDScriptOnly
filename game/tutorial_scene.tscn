@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7ia8ptoani43"]
+
+[ext_resource type="Script" path="res://game/tutorial_scene.gd" id="1_hymqu"]
+[ext_resource type="PackedScene" uid="uid://c364037mrfao2" path="res://game/game_play.tscn" id="2_fkm7d"]
+[ext_resource type="Script" path="res://game/swipe_tutorial.gd" id="4_2wut1"]
+[ext_resource type="Texture2D" uid="uid://ookli4p2gf13" path="res://Fonts/icon/swipe.png" id="4_5lrv7"]
+[ext_resource type="LabelSettings" uid="uid://dhbkagkih21a8" path="res://game/Game_asset/tres/tutarial_help_text.tres" id="5_x3abo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwr6e"]
+size = Vector2(2000, 3000)
+
+[node name="TutorialScene" type="Node"]
+process_mode = 3
+script = ExtResource("1_hymqu")
+
+[node name="Gameplay" parent="." instance=ExtResource("2_fkm7d")]
+unique_name_in_owner = true
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="SwipeDetector" type="TouchScreenButton" parent="UILayer"]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_cwr6e")
+shape_centered = false
+shape_visible = false
+action = "Speed_up"
+script = ExtResource("4_2wut1")
+
+[node name="SwipeTimer" type="Timer" parent="UILayer/SwipeDetector"]
+wait_time = 0.05
+
+[node name="SkipButton" type="Button" parent="UILayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -271.0
+offset_top = 12.0
+offset_right = -7.0
+offset_bottom = 129.0
+grow_horizontal = 0
+focus_mode = 0
+theme_type_variation = &"FlatButton"
+text = "_skip_"
+flat = true
+icon_alignment = 1
+
+[node name="Hand" type="TextureRect" parent="UILayer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.800491, 0.800491, 0.800491, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_5lrv7")
+stretch_mode = 2
+
+[node name="VirtualHandTimer" type="Timer" parent="UILayer/Hand"]
+unique_name_in_owner = true
+
+[node name="HelpText" type="Label" parent="UILayer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = ExtResource("5_x3abo")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="pressed" from="UILayer/SwipeDetector" to="UILayer/SwipeDetector" method="_start"]
+[connection signal="released" from="UILayer/SwipeDetector" to="UILayer/SwipeDetector" method="_end"]
+[connection signal="swipe" from="UILayer/SwipeDetector" to="." method="_on_swipe_detector_swipe"]
+[connection signal="timeout" from="UILayer/SwipeDetector/SwipeTimer" to="UILayer/SwipeDetector" method="_on_swipe_timer_timeout"]
+[connection signal="pressed" from="UILayer/SkipButton" to="." method="_on_skip_button_pressed"]
+[connection signal="timeout" from="UILayer/Hand/VirtualHandTimer" to="." method="_on_timer_timeout"]

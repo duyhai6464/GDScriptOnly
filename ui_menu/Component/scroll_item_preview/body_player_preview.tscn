@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://t1lmepurbkjw"]
+
+[ext_resource type="LabelSettings" uid="uid://dhd42pbh7fcki" path="res://ui_menu/Component/scroll_item_preview/item_name.tres" id="1_4bjrc"]
+[ext_resource type="Script" path="res://ui_menu/Component/scroll_item_preview/body_player_preview.gd" id="1_5qsgj"]
+[ext_resource type="PackedScene" uid="uid://bks571bt4lf0i" path="res://ui_menu/Component/scroll_item_preview/player_preview.tscn" id="2_y6wjy"]
+
+[node name="BodyPlayerPreview" type="PanelContainer"]
+mouse_filter = 2
+script = ExtResource("1_5qsgj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="NamePreview" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = ExtResource("1_4bjrc")
+horizontal_alignment = 1
+
+[node name="PlayerPreview" parent="VBoxContainer" instance=ExtResource("2_y6wjy")]
+unique_name_in_owner = true
+layout_mode = 2

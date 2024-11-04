@@ -1,0 +1,200 @@
+[gd_scene load_steps=11 format=3 uid="uid://cd64vi6gvtbod"]
+
+[ext_resource type="Texture2D" uid="uid://c232h2nyviwlc" path="res://game/Game_asset/ads_img/multimedia_video.png" id="1_whbuo"]
+[ext_resource type="Script" path="res://ui_menu/watch_video_button.gd" id="2_6wqb4"]
+[ext_resource type="Texture2D" uid="uid://com7fd2jcs3k3" path="res://game/Game_asset/ads_img/multimedia_video_disable.png" id="2_i7inh"]
+[ext_resource type="Texture2D" uid="uid://cj1bmqvdhguqp" path="res://game/Game_asset/ads_img/multimedia_video_press.png" id="2_oswq4"]
+[ext_resource type="Texture2D" uid="uid://kk73pbwgdr46" path="res://game/Game_asset/ads_img/connection_error.png" id="4_ktmo3"]
+[ext_resource type="LabelSettings" uid="uid://de803cw7pcqoq" path="res://ui_menu/Component/scroll_item_preview/item_type.tres" id="6_c5exs"]
+
+[sub_resource type="Animation" id="Animation_meofl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/VBoxContainer/AdsLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer/VBoxContainer/AdsLabel2:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_jimgb"]
+resource_name = "fade_in"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/VBoxContainer/AdsLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer/VBoxContainer/AdsLabel2:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hiw6r"]
+resource_name = "show_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/VBoxContainer/AdsLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer/VBoxContainer/AdsLabel2:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wpb42"]
+_data = {
+"RESET": SubResource("Animation_meofl"),
+"fade_in": SubResource("Animation_jimgb"),
+"show_up": SubResource("Animation_hiw6r")
+}
+
+[node name="WatchVideoButton" type="CenterContainer"]
+process_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -46.0
+offset_bottom = 315.0
+grow_horizontal = 2
+script = ExtResource("2_6wqb4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("1_whbuo")
+texture_pressed = ExtResource("2_oswq4")
+texture_disabled = ExtResource("2_i7inh")
+stretch_mode = 5
+
+[node name="ConnectionError" type="TextureRect" parent="HBoxContainer/TextureButton"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("4_ktmo3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="AdsLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "_ads_bonus_label_"
+label_settings = ExtResource("6_c5exs")
+horizontal_alignment = 1
+vertical_alignment = 2
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AdsLabel2" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "_ads_bonus_label_2_"
+label_settings = ExtResource("6_c5exs")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wpb42")
+}
+playback_auto_capture_ease_type = 3
+
+[connection signal="gui_input" from="HBoxContainer" to="." method="_on_ads_label_gui_input"]
+[connection signal="pressed" from="HBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

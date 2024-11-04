@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bce1153hr6x"]
+
+[ext_resource type="Script" path="res://ui_menu/Component/scroll_item_preview/zone_preview.gd" id="1_ieo77"]
+[ext_resource type="PackedScene" uid="uid://bf62y06g2yy1c" path="res://land/expanding_animated.tscn" id="2_5y6jl"]
+[ext_resource type="Texture2D" uid="uid://clva6cnhirodo" path="res://land/squaresheet.tres" id="2_fs23m"]
+
+[node name="ZonePreview" type="CenterContainer"]
+script = ExtResource("1_ieo77")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0.764706, 0.74902, 0.823529, 1)
+custom_minimum_size = Vector2(89, 89)
+layout_mode = 2
+mouse_filter = 1
+texture = ExtResource("2_fs23m")
+region_rect = Rect2(256, 0, 64, 64)
+
+[node name="Expanding_scene" parent="NinePatchRect" instance=ExtResource("2_5y6jl")]
+unique_name_in_owner = true
+scale = Vector2(1.4, 1.4)

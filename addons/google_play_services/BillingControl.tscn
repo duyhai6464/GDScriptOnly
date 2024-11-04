@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://goafrl3qjo44"]
+
+[ext_resource type="Script" path="res://addons/google_play_services/billing_control.gd" id="1_74p5i"]
+
+[node name="BillingControl" type="Node"]
+script = ExtResource("1_74p5i")

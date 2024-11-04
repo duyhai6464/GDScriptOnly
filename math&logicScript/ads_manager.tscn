@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4ufydxq34a2q"]
+
+[ext_resource type="Script" path="res://math&logicScript/ads_manager.gd" id="1_clr8i"]
+[ext_resource type="PackedScene" uid="uid://d0lwsaq3jkhuy" path="res://math&logicScript/reward_ads.tscn" id="3_168fn"]
+[ext_resource type="PackedScene" uid="uid://iqw3g0div2jd" path="res://math&logicScript/interstitial_ads.tscn" id="4_770b2"]
+
+[node name="AdsManager" type="Node"]
+process_mode = 3
+physics_interpolation_mode = 2
+auto_translate_mode = 2
+script = ExtResource("1_clr8i")
+
+[node name="RewardAds" parent="." instance=ExtResource("3_168fn")]
+
+[node name="RewardAds2" parent="." instance=ExtResource("3_168fn")]
+ads_unit_id = "ca-app-pub-6116335554896623/9027809448"
+
+[node name="RewardAds3" parent="." instance=ExtResource("3_168fn")]
+ads_unit_id = "ca-app-pub-6116335554896623/2625424334"
+
+[node name="InterstitialAds" parent="." instance=ExtResource("4_770b2")]

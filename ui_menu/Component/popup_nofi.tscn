@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7skrib1mdfxm"]
+
+[ext_resource type="Script" path="res://ui_menu/Component/popup_nofi.gd" id="1_suorh"]
+[ext_resource type="Texture2D" uid="uid://dtpfvna0jadr8" path="res://Fonts/icon/ok.png" id="1_x8iva"]
+[ext_resource type="LabelSettings" uid="uid://cq7yt36eqvb8w" path="res://ui_menu/Component/scroll_item_preview/confirm_text.tres" id="2_b3pep"]
+[ext_resource type="Theme" uid="uid://ddiqbmdbenvfc" path="res://ui_menu/Component/popup_button_theme.tres" id="3_hn80k"]
+
+[node name="PopupNofi" type="CanvasLayer"]
+layer = 5
+visible = false
+script = ExtResource("1_suorh")
+
+[node name="FullScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Hold" type="Control" parent="FullScreen"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 85.0
+offset_right = -50.0
+offset_bottom = -404.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="FullScreen/Hold"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Panel" type="PanelContainer" parent="FullScreen/Hold/MarginContainer"]
+self_modulate = Color(0.227451, 0.313726, 0.419608, 1)
+layout_mode = 2
+theme_type_variation = &"Panel_type_5"
+
+[node name="MarginContainer" type="MarginContainer" parent="FullScreen/Hold/MarginContainer/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FullScreen/Hold/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CenterContainer" type="CenterContainer" parent="FullScreen/Hold/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBox" type="HBoxContainer" parent="FullScreen/Hold/MarginContainer/Panel/MarginContainer/VBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="FullScreen/Hold/MarginContainer/Panel/MarginContainer/VBoxContainer/CenterContainer/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+stretch_mode = 5
+
+[node name="NofiLabel" type="Label" parent="FullScreen/Hold/MarginContainer/Panel/MarginContainer/VBoxContainer/CenterContainer/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Nofi text"
+label_settings = ExtResource("2_b3pep")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="FullScreen/Hold/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_hn80k")
+action_mode = 0
+icon = ExtResource("1_x8iva")
+icon_alignment = 1
+
+[connection signal="gui_input" from="FullScreen" to="." method="_on_gui_input"]
+[connection signal="gui_input" from="FullScreen/Hold/MarginContainer/Panel" to="." method="_on_gui_input"]
+[connection signal="pressed" from="FullScreen/Hold/MarginContainer/Panel/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

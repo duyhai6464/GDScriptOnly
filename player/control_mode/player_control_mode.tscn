@@ -1,0 +1,181 @@
+[gd_scene load_steps=18 format=3 uid="uid://yqhnja54xgja"]
+
+[ext_resource type="Script" path="res://player/control_mode/Player_control_mode.gd" id="1_2cyh4"]
+[ext_resource type="Texture2D" uid="uid://dqck78781tncb" path="res://Fonts/icon/up.png" id="2_f1nqi"]
+[ext_resource type="Texture2D" uid="uid://dofvqmm3orgjm" path="res://Fonts/icon/left.png" id="3_481qt"]
+[ext_resource type="Texture2D" uid="uid://155esmb02sxw" path="res://Fonts/icon/up_dark.png" id="3_kxxes"]
+[ext_resource type="Texture2D" uid="uid://snw70j8u5pwk" path="res://player/control_mode/joystick.png" id="3_l01il"]
+[ext_resource type="Texture2D" uid="uid://c476d1hd5u3i5" path="res://player/control_mode/knob.png" id="4_cpwb6"]
+[ext_resource type="Texture2D" uid="uid://cu1mu022w7yda" path="res://Fonts/icon/down.png" id="4_paqwm"]
+[ext_resource type="Texture2D" uid="uid://bpiuh6n6yajx5" path="res://Fonts/icon/right.png" id="5_1hk68"]
+[ext_resource type="Texture2D" uid="uid://c5plua7kafo6q" path="res://Fonts/icon/left_dark.png" id="5_khmc0"]
+[ext_resource type="Texture2D" uid="uid://c0c86lhju4n0v" path="res://player/control_mode/joystick_dark.png" id="7_igdsx"]
+[ext_resource type="Texture2D" uid="uid://darptb4i27uds" path="res://Fonts/icon/down_dark.png" id="7_jgd1l"]
+[ext_resource type="Texture2D" uid="uid://cbp0jik7mf48l" path="res://Fonts/icon/right_dark.png" id="9_orbea"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lure"]
+size = Vector2(3000, 3000)
+
+[sub_resource type="GDScript" id="GDScript_kw100"]
+resource_name = "swipe"
+script/source = "extends TouchScreenButton
+
+@onready var timer := $SwipeTimer
+
+var start_position := Vector2()
+signal swipe(action:String)
+
+func _ready():
+	pressed.connect(_start)
+	released.connect(_end)
+
+func _start():
+	start_position = get_global_mouse_position()
+	timer.start()
+
+func _end():
+	timer.stop()
+	timer.timeout.emit()
+
+func _on_swipe_timer_timeout():
+	var end_position := get_global_mouse_position()
+	var dir := end_position - start_position
+	if dir.length() < 10:
+		return
+	var swipe_act = ''
+	if abs(dir.x) > abs(dir.y):
+		swipe_act = 'Move_right' if dir.x > 0 else 'Move_left'
+	else:
+		swipe_act = 'Move_down' if dir.y > 0 else 'Move_up'
+	swipe.emit(swipe_act)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wfd31"]
+radius = 338.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eq1av"]
+radius = 225.0
+
+[sub_resource type="GDScript" id="GDScript_7hy1g"]
+resource_name = "joystick"
+script/source = "extends TouchScreenButton
+
+@onready var timer = $JoyTimer
+@onready var knob = $Knob
+
+var touch: bool = false
+var sha_radius = 110
+var knob_radius = 50
+
+signal changed(action: String)
+
+func _ready():
+	pressed.connect(func ():
+		touch = true
+		timer.start()
+	)
+	released.connect(func ():
+		touch = false
+		timer.stop()
+		knob.position = Vector2()
+	)
+
+func _process(delta):
+	if touch:
+		knob.global_position = get_global_mouse_position() - texture_normal.get_size() / 2 - Vector2(knob_radius, knob_radius)
+		knob.position = knob.position.limit_length(sha_radius)
+
+
+func _on_joy_timer_timeout():
+	if knob.position == Vector2():
+		return
+	var dir = knob.position.normalized()
+	var act = ''
+	if abs(dir.x) > abs(dir.y):
+		act = 'Move_right' if dir.x > 0 else 'Move_left'
+	else:
+		act = 'Move_down' if dir.y > 0 else 'Move_up'
+	changed.emit(act)
+"
+
+[node name="Player_control_mode" type="Node2D"]
+modulate = Color(1, 1, 1, 0.5)
+script = ExtResource("1_2cyh4")
+
+[node name="SwipeDetector" type="TouchScreenButton" parent="."]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_6lure")
+shape_visible = false
+action = "Speed_up"
+script = SubResource("GDScript_kw100")
+
+[node name="SwipeTimer" type="Timer" parent="SwipeDetector"]
+process_callback = 0
+wait_time = 0.05
+
+[node name="WASD" type="Node2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1.8, 1.6, 1.4, 1)
+
+[node name="up" type="TouchScreenButton" parent="WASD"]
+modulate = Color(1.1, 1.1, 1, 1)
+position = Vector2(84, -10)
+texture_normal = ExtResource("2_f1nqi")
+texture_pressed = ExtResource("3_kxxes")
+passby_press = true
+action = "Move_up"
+
+[node name="left" type="TouchScreenButton" parent="WASD"]
+modulate = Color(1.1, 1.1, 1, 1)
+position = Vector2(-22, 85)
+texture_normal = ExtResource("3_481qt")
+texture_pressed = ExtResource("5_khmc0")
+passby_press = true
+action = "Move_left"
+
+[node name="down" type="TouchScreenButton" parent="WASD"]
+modulate = Color(1.1, 1.1, 1, 1)
+position = Vector2(84, 180)
+texture_normal = ExtResource("4_paqwm")
+texture_pressed = ExtResource("7_jgd1l")
+passby_press = true
+action = "Move_down"
+
+[node name="right" type="TouchScreenButton" parent="WASD"]
+modulate = Color(1.1, 1.1, 1, 1)
+position = Vector2(190, 85)
+texture_normal = ExtResource("5_1hk68")
+texture_pressed = ExtResource("9_orbea")
+passby_press = true
+action = "Move_right"
+
+[node name="speedup" type="TouchScreenButton" parent="WASD"]
+position = Vector2(155, 155)
+shape = SubResource("CircleShape2D_wfd31")
+shape_visible = false
+action = "Speed_up"
+
+[node name="Joystick" type="TouchScreenButton" parent="."]
+unique_name_in_owner = true
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("3_l01il")
+texture_pressed = ExtResource("7_igdsx")
+shape = SubResource("CircleShape2D_eq1av")
+shape_visible = false
+action = "Speed_up"
+script = SubResource("GDScript_7hy1g")
+
+[node name="Knob" type="Sprite2D" parent="Joystick"]
+modulate = Color(1.8, 1.6, 1.1, 1)
+self_modulate = Color(2, 2, 2, 1)
+texture = ExtResource("4_cpwb6")
+centered = false
+
+[node name="JoyTimer" type="Timer" parent="Joystick"]
+process_callback = 0
+wait_time = 0.05
+
+[connection signal="swipe" from="SwipeDetector" to="." method="click_action"]
+[connection signal="timeout" from="SwipeDetector/SwipeTimer" to="SwipeDetector" method="_on_swipe_timer_timeout"]
+[connection signal="changed" from="Joystick" to="." method="click_action"]
+[connection signal="timeout" from="Joystick/JoyTimer" to="Joystick" method="_on_joy_timer_timeout"]
